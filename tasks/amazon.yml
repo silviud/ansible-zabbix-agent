@@ -11,3 +11,16 @@
 
 - name: start zabbix agent
   service: name=zabbix-agent state=started enabled=yes
+
+- name: create low level scripts destination
+  file: path=/etc/zabbix/scripts state=directory mode=0755
+
+- name: install low level discovery scripts
+  copy: src={{ item }} dest=/etc/zabbix/scripts/{{ item }} mode=0755
+  with_items:
+    - discover_hdd.sh 
+
+- name: zabbix agent configuration
+  template: dest=/etc/zabbix/zabbix_agentd.conf src=zabbix_agentd.conf.j2
+  notify:
+    - restart zabbix agent

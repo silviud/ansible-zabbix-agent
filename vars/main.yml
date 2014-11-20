@@ -1,3 +1,6 @@
 ---
 # vars file for ansible-zabbix-agent/
 zabbix_agent_version: 2.2
+ansible_zabbix_agent_server: 127.0.0.1
+ansible_zabbix_agent_server_active: 127.0.0.1
+ansible_zabbix_agent_hostname: Zabbix server  # used by Zabbix server itself
