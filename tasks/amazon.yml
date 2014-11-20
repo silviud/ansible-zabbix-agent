@@ -1,0 +1,13 @@
+---
+# amazon linux specific
+- name: import zabbix rpm key
+  rpm_key: state=present key=http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
+
+- name: create yum repo 
+  template: dest=/etc/yum.repos.d/zabbix.repo src=yum.repo.j2 owner=root mode=0644
+
+- name: install zabbix agent
+  yum: name=zabbix-agent state=installed
+
+- name: start zabbix agent
+  service: name=zabbix-agent state=started enabled=yes

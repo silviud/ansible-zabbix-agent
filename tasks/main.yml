@@ -1,2 +1,6 @@
 ---
 # tasks file for ansible-zabbix-agent/
+- include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+- include: amazon.yml
+  when: ansible_distribution == 'Amazon'

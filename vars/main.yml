@@ -1,2 +1,3 @@
 ---
 # vars file for ansible-zabbix-agent/
+zabbix_agent_version: 2.2
