@@ -1,0 +1,4 @@
+# Sample user params
+# Drop it into /etc/zabbix/zabbix_agent.d/YOUR_PARAMS.conf
+#
+UserParameter=custom.vfs.dev.read.ops[*],cat /proc/diskstats | egrep $1 | head -1 | awk '{print $$4}'

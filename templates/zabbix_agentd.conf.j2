@@ -3,10 +3,10 @@ LogFile=/var/log/zabbix/zabbix_agentd.log
 LogFileSize=0
 Server={{ ansible_zabbix_agent_server }}
 ServerActive={{ ansible_zabbix_agent_server_active }}
+{% if ansible_zabbix_agent_hostname is not none %}
 Hostname={{ ansible_zabbix_agent_hostname }}
+{% endif %}
 Include=/etc/zabbix/zabbix_agentd.d/
 # low level discovery
 EnableRemoteCommands=1
 UnsafeUserParameters=1
-# TODO to loop over low level enabled scripts
-UserParameter=discovery.hard_disk,/etc/zabbix/scripts/discover_hdd.sh
